@@ -1,0 +1,28 @@
+<include src="/includes/search-bar.wxml"/>
+<view class="lists">
+  <navigator wx:for="{{shops}}" wx:key="id" url="/pages/detail/detail?item={{item.id}}">
+    <view class="list-item">
+    	<view class="left">
+	      <view class="img">
+	      	<image src="{{item.images[0]}}" mode="scaleToFill" />
+	      </view>
+	      <view class="desc">
+	        <text class="title">{{item.name}}</text>
+	        <text>电话：{{item.phone ? item.phone : "暂无"}}</text>
+	        <text>地址：{{item.address}}</text>
+	        <text class="hours">营业时间：{{item.businessHours}}</text>
+	      </view>
+      </view>
+      <view  class="right">
+        <!-- <text wx:if="{{item.ratingFinal > 0}}">{{item.ratingFinal}}分</text>
+        <text wx:else>暂无评分</text> -->
+        <text>{{item.score ? item.score : "无"}}</text>
+      </view>
+    </view>
+  </navigator>
+</view>
+<view wx:if="{{hasMore}}" class="loadmore loading">正在加载...</view>
+<view wx:else class="loadmore">没有更多数据了！</view>
+<!-- <view class="loadmore loading">正在加载...</view> -->
+
+<!-- <view wx:if="{{!hasMore}}" class="loadmore">没有更多数据了！</view> -->
